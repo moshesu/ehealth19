@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SleepItOff.SmartAlarmPage"
+             BackgroundImage="night.jpg">
+
+    <ContentPage.Content>
+        <Grid  RowSpacing="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label 
+                HorizontalOptions="Center"
+                Text="smart alarm"
+                Font="Bold,20"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                x:Name="txt"
+                YAlign="Center"
+                Grid.Row="0" />
+            <TimePicker x:Name="picker"
+                HorizontalOptions="Center"
+                Grid.Row="1"
+                FontSize="20"
+                VerticalOptions="Center"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                Format="T"/>
+            <Button Text="start"
+                ClassId="Sign In"
+                Grid.Row="3"
+                TextColor="Black"  
+                Margin="20,20"
+                HeightRequest="40" WidthRequest="40" BorderRadius="20"
+                Font="24"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                BackgroundColor="Transparent"
+                BorderColor="Black"
+                BorderWidth="1"
+                Clicked="OnButtonClicked" />
+            <Button Text="cancel"
+                ClassId="cancel"
+                Grid.Row="4"
+                TextColor="Black"  
+                Margin="20,20"
+                HeightRequest="40" WidthRequest="40" BorderRadius="20"
+                Font="24"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                BackgroundColor="Transparent"
+                BorderColor="Black"
+                BorderWidth="1"
+                Clicked="cancel" />
+            <Picker Title="Change Alarm Ringtone"
+                    x:Name="SongsPicker" 
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center"
+                    SelectedIndexChanged="songSelected"    
+                    Grid.Row="5"
+                    TextColor="Black" 
+                    Margin="20,20"
+                    FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    BackgroundColor="Transparent" >
+                    <Picker.Items>
+                        <x:String>Regular</x:String>
+                        <x:String>Annoying</x:String>
+                        <x:String>Neon</x:String>
+                        <x:String>Awaken</x:String>
+                        <x:String>Fire</x:String>
+                    </Picker.Items>
+            </Picker>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

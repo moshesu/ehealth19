@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="SleepItOff.StressLevelPage">
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image 
+                x:Name="image"
+                Grid.Row="0"
+                Grid.RowSpan="1" />
+            <Label
+                Grid.Row="1"
+                VerticalOptions="Center"
+                Text="The above graph shows your stress level relative to other users of the app with your gender and in your age range.&#x0a;&#x0a;Your stress level is determined by increases and decreases in your sleep efficiency value, where decrease in your sleep efficiency value means you are probably more in stress.&#x0a;&#x0a;This app measures your stress level by comparison between your sleep efficiency and the mean of sleep efficiency values of other users of the app from your gender and in your age range."
+                TextColor="Black"
+                Font="13"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                Margin="10, 10"
+                FontAttributes="Italic" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

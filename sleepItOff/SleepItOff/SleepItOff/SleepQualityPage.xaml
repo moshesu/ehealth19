@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SleepItOff"
+             x:Class="SleepItOff.SleepQualityPage"
+             BackgroundImage="blue.jpg">
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Button Text="How's my Sleep for my age"
+                ClassId="How's my Sleep for my age"
+                Grid.Row="1"
+                Font="Bold,17"
+                TextColor="Black"                  
+                Margin="20,20"
+                HeightRequest="40" WidthRequest="40" BorderRadius="20"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                BackgroundColor="LightSteelBlue"
+                Clicked="OnButtonClicked" />
+        <Button Text="How's my Sleep for my gender"
+                ClassId="How's my Sleep for my gender"
+                Grid.Row="2"
+                Font="Bold,17"
+                TextColor="Black"  
+                Margin="20,20"
+                HeightRequest="40" WidthRequest="40" BorderRadius="20"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                BackgroundColor="LightSteelBlue"
+                Clicked="OnButtonClicked" />
+        <Button Text="Changes in my sleep quality across time"
+                ClassId="Changes in my sleep quality across time"
+                Grid.Row="3"
+                Font="Bold,17"
+                TextColor="Black"  
+                Margin="20,20"
+                HeightRequest="40" WidthRequest="40" BorderRadius="20"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                BackgroundColor="LightSteelBlue"
+                Clicked="OnButtonClicked" />
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SleepItOff.HelpPage"
+             xmlns:vm="clr-namespace:SleepItOff;assembly=SleepItOff" >
+    <ContentPage.BindingContext>
+        <vm:checkMovement />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Label Margin="15,15">
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="&#x0a;To use this app first fownload the microsoft band app from here:&#x0a;&#x0a;" 
+                          TextColor="Black" FontSize="16"/>
+                    <Span Text="https://www.apkmirror.com/apk/microsoft-corporation/microsoft-health/microsoft-health-1-3-20329-1-release/microsoft-health-1-3-20329-1-android-apk-download/"
+                  TextColor="Blue"
+                  FontSize="16"
+                  TextDecorations="Underline">
+                        <Span.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ClickCommand2}"
+                                          CommandParameter="https://www.apkmirror.com/apk/microsoft-corporation/microsoft-health/microsoft-health-1-3-20329-1-release/microsoft-health-1-3-20329-1-android-apk-download/" />
+                        </Span.GestureRecognizers>
+                    </Span>
+                    <Span Text="&#x0a;&#x0a;Log in to the app using your microsoft account , register your band inside the app and start sleeping better!&#x0a;&#x0a;For more information visit our site:&#x0a;&#x0a;"
+                        TextColor="Black" FontSize="16" />
+                    <Span Text="https://grishal012.wixsite.com/website"
+                  TextColor="Blue"
+                  FontSize="16"
+                  TextDecorations="Underline">
+                        <Span.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ClickCommand2}"
+                                          CommandParameter="https://grishal012.wixsite.com/website" />
+                        </Span.GestureRecognizers>
+                    </Span>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+
+    </StackLayout>
+</ContentPage>
