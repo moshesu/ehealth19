@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SignBuzz.Solo.Game2.MasterDetailPage1Detail"
+             Title="Second Game"
+             BackgroundColor="#feffdb">
+  <StackLayout Padding="10">
+        <Grid x:Name="ins">
+            <Label Grid.Row="0"  x:Name="lab" Text="In this Game you will practice the signs you learned earlier. In each exercise you will be presented with a picture of an animal. Your task is to fill in the animal's name. Use the Nav bar in the left corner to switch exercises"/>
+            <Button Grid.Row="1"  HorizontalOptions="Center" HeightRequest="60" BackgroundColor="#feffdb" BorderColor="green" BorderWidth="2" BorderRadius="30" Clicked="first_ex" Text="Start the stage!"></Button>
+        </Grid>
+        <Image WidthRequest="200" HeightRequest="200"  x:Name="animalImg" Source=""></Image>
+        <Label x:Name="nav" HorizontalOptions="Center" Text="Use the Nav bar in the left corner to switch exercises"/>
+        <Grid VerticalOptions="Center" IsVisible="False" x:Name="firstQ" Margin="10">
+            <Button Clicked="Btn_handler_firstQ" WidthRequest="60" HorizontalOptions="Center" HeightRequest="60" BackgroundColor="red"
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0"  Grid.Column="0" Text="d" />
+            <Button Clicked="Btn_handler_firstQ" WidthRequest="60" HorizontalOptions="Center" HeightRequest="60" BackgroundColor="red" Text="o" 
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="1"/>
+            <Button Clicked="Btn_handler_firstQ" WidthRequest="60" HorizontalOptions="Center" HeightRequest="60" BackgroundColor="Red" Text="g"
+                        BorderColor="Red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="2"/>
+        </Grid>
+        <Grid VerticalOptions="Center" IsVisible="False" x:Name="secQ" Margin="10">
+            <Button Clicked="Btn_handler_secQ" WidthRequest="60" HorizontalOptions="Center" HeightRequest="60" BackgroundColor="red"
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0"  Grid.Column="0" Text="c" />
+            <Button Clicked="Btn_handler_secQ" WidthRequest="60" HorizontalOptions="Center" HeightRequest="60" BackgroundColor="red" Text="a" 
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="1"/>
+            <Button Clicked="Btn_handler_secQ" WidthRequest="60" HorizontalOptions="Center" HeightRequest="60" BackgroundColor="Red" Text="t"
+                        BorderColor="Red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="2"/>
+        </Grid>
+        <Grid VerticalOptions="Center" IsVisible="False" x:Name="thirdQ" Margin="10">
+            <Button Clicked="Btn_handler_thirdQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red"
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0"  Grid.Column="0" Text="h" />
+            <Button Clicked="Btn_handler_thirdQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red" Text="o" 
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="1"/>
+            <Button Clicked="Btn_handler_thirdQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red" Text="r"
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="2"/>
+            <Button Clicked="Btn_handler_thirdQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red" Text="s"
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="3"/>
+            <Button Clicked="Btn_handler_thirdQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red" Text="e"
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="4"/>
+
+        </Grid>
+        <Grid VerticalOptions="Center" IsVisible="False" x:Name="fourthQ" Margin="10">
+            <Button Clicked="Btn_handler_fourthQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red"
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0"  Grid.Column="0" Text="m" />
+            <Button Clicked="Btn_handler_fourthQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red" Text="o" 
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="1"/>
+            <Button Clicked="Btn_handler_fourthQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red" Text="n" 
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="2"/>
+            <Button Clicked="Btn_handler_fourthQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red"
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0"  Grid.Column="3" Text="k" />
+            <Button Clicked="Btn_handler_fourthQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red" Text="e" 
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="4"/>
+            <Button Clicked="Btn_handler_fourthQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red" Text="y" 
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="5"/>
+
+        </Grid>
+        <Grid VerticalOptions="Center" IsVisible="False" x:Name="fifthQ" Margin="10">
+            
+            <Button Clicked="Btn_handler_fifthQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red"
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0"  Grid.Column="0" Text="c" />
+            <Button Clicked="Btn_handler_fifthQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red" Text="a" 
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="1"/>
+            <Button Clicked="Btn_handler_fifthQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="Red" Text="m"
+                        BorderColor="Red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="2"/>
+            <Button Clicked="Btn_handler_fifthQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red"
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0"  Grid.Column="3" Text="e" />
+            <Button Clicked="Btn_handler_fifthQ" WidthRequest="40" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="red" Text="l" 
+                        BorderColor="red" BorderWidth="2" BorderRadius="30" Grid.Row="0" Grid.Column="4"/>
+
+        </Grid>
+        <Label x:Name="finish" TextColor="Lime" FontSize="Large" Text="DONE!" IsVisible="False" HorizontalOptions="Center">
+            <Label.FontFamily>
+                <OnPlatform x:TypeArguments="x:String">
+                    <On Platform="iOS" Value="MarkerFelt-Thin" />
+                    <On Platform="Android" Value="Sniglet-Regular.ttf#LSniglet-Regular" />
+                </OnPlatform>
+            </Label.FontFamily>
+        </Label>
+    </StackLayout>
+</ContentPage>
