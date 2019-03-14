@@ -10,5 +10,4 @@ https://www.cs.tau.ac.il/~moshesulamy/microsoft19.htm
 ### Projects:
 [FiTeam](https://fiteamtau.wixsite.com/fiteam)  
 [Signbuzz](https://benhausman.wixsite.com/signbuzz)
-
 [SleepItOff](https://grishal012.wixsite.com/website)
