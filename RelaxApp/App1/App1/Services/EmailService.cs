@@ -17,7 +17,7 @@ namespace App1
             if (Login.Default.CurrentUser.EmergencyContactEmail != null && Login.Default.CurrentUser.EmergencyContactEmail != "")
             {
                 //var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
-                string apiKey = "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";
+                string apiKey = "apiKey"; //replace with real apiKey
                 var client = new SendGridClient(apiKey);
                 var msg = new SendGridMessage()
                 {
