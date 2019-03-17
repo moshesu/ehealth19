@@ -15,17 +15,23 @@ namespace SleepItOff.Droid
     [Activity(Label = "SleepItOff", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
+        PowerManager.WakeLock wL;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             var context = this.ApplicationContext;
             PowerManager powerManager = (PowerManager)context.GetSystemService("power");
-            PowerManager.WakeLock wL = powerManager.NewWakeLock(WakeLockFlags.Full, "whatever");
+             wL = powerManager.NewWakeLock(WakeLockFlags.Partial, "whatever");
             wL.Acquire();
             base.OnCreate(savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
+        }
+        protected override void OnDestroy()
+        {
+            wL.Release();
+            base.OnDestroy();
         }
 
 
