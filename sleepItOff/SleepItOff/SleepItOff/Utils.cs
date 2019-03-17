@@ -71,18 +71,6 @@ namespace SleepItOff
         , CancellationTokenSource token_for_logic,int type)
         {
             txt.Text = "alarm at: "+picker.Time.ToString();
-            // cancelling last calls
-            if (tokenSource != null)
-            {
-                tokenSource.Cancel();
-            }
-            if (token_for_logic != null)
-            {
-                token_for_logic.Cancel();
-            }
-            //new call
-            tokenSource = new CancellationTokenSource();
-            token_for_logic = new CancellationTokenSource();
 
             TimeSpan timeToWait = picker.Time - DateTime.Now.TimeOfDay;
 
@@ -91,17 +79,23 @@ namespace SleepItOff
                 var temp = new TimeSpan(24, 0, 0);  // next day 
                 timeToWait = temp + timeToWait;
             }
-            SetTimer(timeToWait, tokenSource, token_for_logic,txt);
+            //SetTimer(timeToWait, tokenSource, token_for_logic,txt);
             //LoadingLabelXaml.CheckToWakeUpAsync(sender, e, type, DateTime.Now.Add(timeToWait), DateTime.Now, tokenSource, token_for_logic,txt);
-            LoadingLabelXaml.CheckToWakeUpAsync2(sender, e, type, DateTime.Now.Add(timeToWait), DateTime.Now, tokenSource, token_for_logic,txt);
+            try
+            {
+                await LoadingLabelXaml.CheckToWakeUpAsync2(sender, e, type, DateTime.Now.Add(timeToWait), DateTime.Now, tokenSource, token_for_logic, txt);
+            }
+            catch (Exception exp)
+            {
 
+            }
 
         }
-        public static async void SetTimer(TimeSpan timeToWait, CancellationTokenSource token, CancellationTokenSource token_for_logic,Label txt)
+        public static async Task SetTimer(TimeSpan timeToWait, CancellationTokenSource token, CancellationTokenSource token_for_logic,Label txt)
         {
             try
             {
-                await Task.Delay(timeToWait, token.Token);  //make it wait until half hour before
+                await Task.Delay(timeToWait, token.Token);  
             }
             catch
             {

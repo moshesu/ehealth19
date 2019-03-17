@@ -27,6 +27,17 @@ namespace SleepItOff
 
         private async void OnButtonClicked(object sender, EventArgs e)
         {
+            // cancelling last calls
+            if (tokenSource != null)
+            {
+                tokenSource.Cancel();
+            }
+            if (token_for_logic != null)
+            {
+                token_for_logic.Cancel();
+            }
+            tokenSource = new CancellationTokenSource();
+            token_for_logic = new CancellationTokenSource();
             SleepItOff.Utils.buttonClick(sender, e, picker, txt, tokenSource, token_for_logic, (int)AlarmType.CreativeSleep);
 
         }

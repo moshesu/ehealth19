@@ -434,50 +434,51 @@ namespace SleepItOff
             }
         }
 
-        //@return expected stage and how much time it lasts yet at @timeToSimulateForward time from @initialSegment
-        //@param findREM: if findREM==1, stops when find REM stage and returns how much time needed to wait
+        //@return expected stage and how much time before end of simulation (last time to wake up) the last segment started
+        //@param findREM: if findREM==creative sleep, stops when find REM stage and returns how much time needed to wait
         public static Tuple<int, TimeSpan> SimulateExpectedStage(TimeSpan timeToSimulateForward, int initialSegment, int findREM)
         {
             TimeSpan timeThatSimulated = new TimeSpan(0, 0, 0);
+            TimeSpan timeThatSimulatedTemp = new TimeSpan(0, 0, 0); 
             int currentSegment = initialSegment;
             int nextSegment = currentSegment;            
-            while (TimeSpan.Compare(timeToSimulateForward, timeThatSimulated)>=0)  //timeThatSimulated < timeToSimulateForward
+            while (TimeSpan.Compare(timeToSimulateForward, timeThatSimulatedTemp)>=0)  //timeThatSimulated < timeToSimulateForward
             {
                 currentSegment = nextSegment;
+                timeThatSimulated = timeThatSimulatedTemp;
                 switch (currentSegment)
                 {
                     case (int)SegmentStage.Awake:
-                        timeThatSimulated = timeThatSimulated.Add(new TimeSpan(0, SegmentSummaryTable.Awake.avgDuration(), 0));
+                        timeThatSimulatedTemp = timeThatSimulatedTemp.Add(new TimeSpan(0, SegmentSummaryTable.Awake.avgDuration(), 0));
                         nextSegment = SegmentSummaryTable.Awake.maxChanceToNextStage();
                         break;
                     case (int)SegmentStage.Doze:
-                        timeThatSimulated = timeThatSimulated.Add(new TimeSpan(0, SegmentSummaryTable.Doze.avgDuration(), 0));
+                        timeThatSimulatedTemp = timeThatSimulatedTemp.Add(new TimeSpan(0, SegmentSummaryTable.Doze.avgDuration(), 0));
                         nextSegment = SegmentSummaryTable.Doze.maxChanceToNextStage();
                         break;
                     case (int)SegmentStage.Snooze:
-                        timeThatSimulated = timeThatSimulated.Add(new TimeSpan(0, SegmentSummaryTable.Snooze.avgDuration(), 0));
+                        timeThatSimulatedTemp = timeThatSimulatedTemp.Add(new TimeSpan(0, SegmentSummaryTable.Snooze.avgDuration(), 0));
                         nextSegment = SegmentSummaryTable.Snooze.maxChanceToNextStage();
                         break;
                     case (int)SegmentStage.RestlessSleep:
-                        timeThatSimulated = timeThatSimulated.Add(new TimeSpan(0, SegmentSummaryTable.RestlessSleep.avgDuration(), 0));
+                        timeThatSimulatedTemp = timeThatSimulatedTemp.Add(new TimeSpan(0, SegmentSummaryTable.RestlessSleep.avgDuration(), 0));
                         nextSegment = SegmentSummaryTable.RestlessSleep.maxChanceToNextStage();
                         break;
                     case (int)SegmentStage.REM:
-                        if (findREM == 1)
+                        if (findREM == (int)AlarmType.CreativeSleep)
                         {
-                            return Tuple.Create(currentSegment, timeThatSimulated);
+                            return Tuple.Create((int)SegmentStage.REM, timeThatSimulated);
                         }
-                        timeThatSimulated = timeThatSimulated.Add(new TimeSpan(0, SegmentSummaryTable.REMSleep.avgDuration(), 0));
+                        timeThatSimulatedTemp = timeThatSimulatedTemp.Add(new TimeSpan(0, SegmentSummaryTable.REMSleep.avgDuration(), 0));
                         nextSegment = SegmentSummaryTable.REMSleep.maxChanceToNextStage();
                         break;
                     case (int)SegmentStage.RestfulSleep:
-                        timeThatSimulated = timeThatSimulated.Add(new TimeSpan(0, SegmentSummaryTable.RestfulSleep.avgDuration(), 0));
+                        timeThatSimulatedTemp = timeThatSimulatedTemp.Add(new TimeSpan(0, SegmentSummaryTable.RestfulSleep.avgDuration(), 0));
                         nextSegment = SegmentSummaryTable.RestfulSleep.maxChanceToNextStage();
                         break;
                 }                
-
             }
-            return Tuple.Create(currentSegment, timeToSimulateForward.Subtract(timeThatSimulated));
+            return Tuple.Create(currentSegment, timeToSimulateForward.Subtract(timeThatSimulated));//tuple2 - how much time before end of simulation (last time to wake up) the last segment started
         }
 
         //smart alarm and combat nap:
@@ -500,7 +501,8 @@ namespace SleepItOff
             , CancellationTokenSource token_for_logic, Label txt)
         {
             int expectedSegment = 0;
-            TimeSpan segmantTime;
+            TimeSpan segmantTime; //last segment time actualy
+            TimeSpan minutes0 = new TimeSpan(0, 0, 0);
             TimeSpan minutes10 = new TimeSpan(0, 10, 0);
             TimeSpan minutes20 = new TimeSpan(0, 20, 0);
             TimeSpan minutes30 = new TimeSpan(0, 30, 0);
@@ -511,24 +513,31 @@ namespace SleepItOff
             bool first_sleep_searching = true;
             int real_sleep_response;
             int simulator_segment_start = (int)SegmentStage.Awake;
-
                 while (true)
-                {
-                    (expectedSegment, segmantTime) = SimulateExpectedStage(last_alarm_time.Subtract(exp_sleep_start_time), simulator_segment_start, 0);
-                    if (expectedSegment == (int)SegmentStage.RestfulSleep)
+                {                
+                    (expectedSegment, segmantTime) = SimulateExpectedStage(last_alarm_time.Subtract(exp_sleep_start_time), simulator_segment_start, alarmType);
+                    if ((alarmType != (int)AlarmType.CreativeSleep) && (expectedSegment == (int)SegmentStage.RestfulSleep))
                     {
-                        if (TimeSpan.Compare(minutes30, segmantTime) > 0)
+                        if (TimeSpan.Compare(minutes30, segmantTime) > 0) //segment time is less then 30 minutes
                         {
-                            segmantTime = segmantTime.Add(new TimeSpan(0, 5, 0));
-                            newAlarmTime = last_alarm_time.Add(segmantTime);
+                            segmantTime = segmantTime.Add(new TimeSpan(0, 5, 0)); //adding 5 minutes to be sure that awakment will be before starting restful segment
+                            newAlarmTime = last_alarm_time.Subtract(segmantTime);
                         }
                     }
-                    else if (expectedSegment == (int)SegmentStage.REM)
+                    else if ((alarmType == (int)AlarmType.CreativeSleep) && (expectedSegment == (int)SegmentStage.REM))
                     {
-                        newAlarmTime = exp_sleep_start_time.Add(segmantTime);
+                        newAlarmTime = exp_sleep_start_time.Add(segmantTime); //segment time in this case means how much time to wait before REM stage starts
+                    }
+                    
+                    if (TimeSpan.Compare(minutes0, newAlarmTime.Subtract(DateTime.Now)) == 1) //edge case that we passed the time
+                    {
+                        tempTime = minutes0;
+                    }
+                    else
+                    {
+                        tempTime = newAlarmTime.Subtract(DateTime.Now); //time to wait before waking up
                     }
 
-                    tempTime = newAlarmTime.Subtract(DateTime.Now);
                     if ((((TimeSpan.Compare(minutes70, tempTime)) == 1) && (alarmType != (int)AlarmType.CombatNap)) //for smartAlarm and creative sleep - don't check less then 70 minutes
                        || (((TimeSpan.Compare(minutes20, tempTime)) == 1) && (alarmType == (int)AlarmType.CombatNap))){ //for combatNap
                         await Task.Delay(tempTime, token_for_logic.Token);
@@ -537,32 +546,38 @@ namespace SleepItOff
                     }
                     else
                     {
-                    if (first_sleep_searching == false)
-                    {
-                        if (alarmType == (int)AlarmType.CombatNap)
+                        if (first_sleep_searching == false)
                         {
-                            await Task.Delay(minutes10, token_for_logic.Token);
+                            if (alarmType == (int)AlarmType.CombatNap)
+                            {
+                                    await Task.Delay(minutes10, token_for_logic.Token);
+                            }
+                            else//smart alarm / creative sleep
+                            {
+                                await Task.Delay(minutes60, token_for_logic.Token);
+                            }
                         }
-                        else//smart alarm / creative sleep
+                    
+                        real_sleep_response = await checkMovement.CheckSleepness(first_sleep_searching, (last_alarm_time.Subtract(DateTime.Now)).Minutes - 10);//tempTime.Minutes-10  - dont check after last time to awake
+                        //takes checkMovement.timeSpent minutes
+                        
+                        if (first_sleep_searching)
                         {
-                            await Task.Delay(minutes60, token_for_logic.Token);
+                            if (real_sleep_response == 1)
+                            {
+                                first_sleep_searching = false;
+                                exp_sleep_start_time = checkMovement.asleepTime;
+                                simulator_segment_start = (int)SegmentStage.Doze;
+                            }
+                            else { }//do nothing. probably will awake at regular last_awake_time
                         }
-
-                    }
-                    real_sleep_response = await checkMovement.CheckSleepness(first_sleep_searching);
-                    if (first_sleep_searching)
-                    {
-                        first_sleep_searching = false;
-                        exp_sleep_start_time = checkMovement.asleepTime;
-                        simulator_segment_start = (int)SegmentStage.Doze;
-                    }
-                    else if (real_sleep_response == 0)//was sleeping but awake now
-                    {
-                        first_sleep_searching = true;
-                        exp_sleep_start_time = DateTime.Now;
-                        simulator_segment_start = (int)SegmentStage.Awake;
-                    }
-                    else { }//still sleeping. do nothing
+                        else if (real_sleep_response == 0)//was sleeping but awake now
+                        {
+                          first_sleep_searching = true;
+                          exp_sleep_start_time = DateTime.Now;
+                          simulator_segment_start = (int)SegmentStage.Awake;
+                        }
+                        else { }//still sleeping. do nothing
 
                     }
                 }
