@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SignBuzz.Solo.Game1.LetterPage">
+    <ContentPage.Content>
+        <StackLayout x:Name="layout" Padding="20">
+            <Label x:Name= "letterHeader" HorizontalTextAlignment="Center" FontSize="Large">
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="MarkerFelt-Thin" />
+                        <On Platform="Android" Value="Sniglet-Regular.ttf#LSniglet-Regular" />
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+            <Image x:Name= "letterImage" HeightRequest="150"/>
+            <StackLayout Margin="20">
+                <Button WidthRequest="170" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="#cdffeb"  BorderWidth="2" BorderRadius="30" Text="&#xf03d;" Clicked="PlayVideo" >
+                    <Button.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String" Android="fa-solid-400.otf#Font Awesome 5 Free Regular" iOS="Font Awesome 5 Free" />
+                    </Button.FontFamily>
+                </Button>
+                <Button WidthRequest="150" HorizontalOptions="Center" HeightRequest="40" BackgroundColor="#494ca2"
+                         BorderWidth="2" BorderRadius="30" Text="Try for yourself!" Clicked="takePicture" />
+                <Label x:Name="finish" TextColor="Lime" FontSize="Large" Text="DONE!" IsVisible="False" HorizontalOptions="Center">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="MarkerFelt-Thin" />
+                            <On Platform="Android" Value="Sniglet-Regular.ttf#LSniglet-Regular" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

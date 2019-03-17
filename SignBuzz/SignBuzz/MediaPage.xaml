@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="SignBuzz.MediaPage"
+             BackgroundColor="#feffdb">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label x:Name="headline" HorizontalTextAlignment="Center" FontSize="Large">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="MarkerFelt-Thin" />
+                            <On Platform="Android" Value="Sniglet-Regular.ttf#LSniglet-Regular" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <Grid Margin="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Button x:Name="btnSelectPic" Grid.Row="1" HeightRequest="40" Grid.Column="0" Text="&#xf302;" Clicked="btnSelectPic_Clicked" BackgroundColor="Transparent" >
+                        <Button.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String" Android="fa-solid-400.otf#Font Awesome 5 Free Regular" iOS="Font Awesome 5 Free" />
+                        </Button.FontFamily>
+                    </Button>
+                    <Button x:Name="btnTakePic" Grid.Row="1" HeightRequest="40" Grid.Column="1" Text= "&#xf030;" Clicked="btnTakePic_Clicked" BackgroundColor="Transparent"  >
+                        <Button.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String" Android="fa-solid-400.otf#Font Awesome 5 Free Regular" iOS="Font Awesome 5 Free" />
+                        </Button.FontFamily>
+                    </Button>
+                </Grid>
+                <ffimageloading:CachedImage x:Name="imageView" HorizontalOptions="Center" VerticalOptions="Center"
+                    WidthRequest="300" HeightRequest="300"
+                    DownsampleToViewSize="true"/>
+                <ActivityIndicator x:Name="uploadIndicator" IsVisible="False" IsRunning="False" Color="DodgerBlue" />
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Text="Submit Picture" Clicked="btnUpload_Clicked" x:Name="btnUpload"  WidthRequest="150" HorizontalOptions="Center" HeightRequest="60" BackgroundColor="#8f71ff"
+                        BorderWidth="2" BorderRadius="30" /> 
+                </Grid>
+                <Label IsVisible="False" x:Name="correct" HorizontalTextAlignment="Center" FontSize="Large" TextColor="Lime" Text="CORRECT! Great job!">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="MarkerFelt-Thin" />
+                            <On Platform="Android" Value="Sniglet-Regular.ttf#LSniglet-Regular" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <Grid x:Name="error_grid" IsVisible="False">
+                    <Label Grid.Row="0" Grid.Column="0" x:Name="incorrect" HorizontalTextAlignment="Center" FontSize="Large" TextColor="Red" Text="Not Quite... Try again!">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value="MarkerFelt-Thin" />
+                                <On Platform="Android" Value="Sniglet-Regular.ttf#LSniglet-Regular" />
+                            </OnPlatform>
+                        </Label.FontFamily>
+                    </Label>
+                    <Label Grid.Row="0" Grid.Column="1" x:Name="output_letter" HorizontalTextAlignment="Center" FontSize="Medium" TextColor="Blue" Text="Not Quite... Try again!">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="x:String">
+                                <On Platform="iOS" Value="MarkerFelt-Thin" />
+                                <On Platform="Android" Value="Sniglet-Regular.ttf#LSniglet-Regular" />
+                            </OnPlatform>
+                        </Label.FontFamily>
+                    </Label>
+                </Grid>
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+

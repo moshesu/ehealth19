@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SignBuzz.Compete.Submit">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Youre Score is: " FontSize="24" HorizontalOptions="CenterAndExpand" >
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="MarkerFelt-Thin" />
+                        <On Platform="Android" Value="Srisakdi-Regular.ttf#LSrisakdi-Regular" />
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+            <Label x:Name="score" FontSize="20"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Button  WidthRequest="150" HorizontalOptions="Center" HeightRequest="60" BackgroundColor="#feffdb"
+                        BorderColor="green" BorderWidth="2" BorderRadius="30" x:Name="submit_btn" Text="submit" Clicked="submit_handler"></Button>
+            <Label x:Name="finish" Text="Please go to your profile to see who is the best" FontSize="15" HorizontalOptions="CenterAndExpand" >
+                <Label.FontFamily>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="MarkerFelt-Thin" />
+                        <On Platform="Android" Value="Srisakdi-Regular.ttf#LSrisakdi-Regular" />
+                    </OnPlatform>
+                </Label.FontFamily>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

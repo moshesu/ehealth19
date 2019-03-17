@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SleepItOff"
+             x:Class="SleepItOff.MainPage"
+             BackgroundImage="blue.jpg">
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Button Text="Smart Alarm"
+                ClassId="Smart Alarm"
+                Grid.Row="0"
+                Clicked="OnButtonClicked"
+                Font="Bold,17"
+                TextColor="Black"  
+                Margin="20,20"
+                HeightRequest="40" WidthRequest="40" BorderRadius="20"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                BackgroundColor="LightSteelBlue" />
+        <Button Text="Combat Nap"
+                ClassId="Combat Nap"
+                Grid.Row="1"
+                Clicked="OnButtonClicked"
+                Font="Bold,17"
+                TextColor="Black"
+                Margin="20,20"
+                HeightRequest="40" WidthRequest="40" BorderRadius="20"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                BackgroundColor="LightSteelBlue" />
+        <Button Text="creative sleep"
+                ClassId="creative sleep"
+                Grid.Row="2"
+                Clicked="OnButtonClicked" 
+                Font="Bold,17"
+                TextColor="Black"
+                Margin="20,20"
+                HeightRequest="40" WidthRequest="40" BorderRadius="20"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                BackgroundColor="LightSteelBlue" />
+        <Button Text="Statistics"
+                ClassId="Statistics"
+                Grid.Row="3"
+                Clicked="OnButtonClicked"
+                Font="Bold,17"
+                TextColor="Black"
+                Margin="20,20"
+                HeightRequest="40" WidthRequest="40" BorderRadius="20"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                BackgroundColor="LightSteelBlue" />
+        <Button Text="help"
+                ClassId="help"
+                Grid.Row="4"
+                Clicked="OnButtonClicked"
+                Font="Bold,17"
+                TextColor="Black"
+                Margin="20,20"
+                HeightRequest="40" WidthRequest="40" BorderRadius="20"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                BackgroundColor="LightSteelBlue" />
+        <Button Text="Sign out"
+                ClassId="Sign Out"
+                Grid.Row="5"
+                Clicked="OnButtonClicked"
+                Font="Bold,17"
+                TextColor="Black"                
+                Margin="20,20"
+                HeightRequest="40" WidthRequest="40" BorderRadius="20"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                BackgroundColor="LightSteelBlue" />
+    </Grid>
+
+</ContentPage>

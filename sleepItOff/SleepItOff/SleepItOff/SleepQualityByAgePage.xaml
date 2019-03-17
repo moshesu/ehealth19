@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SleepItOff.SleepQualityByAgePage" >
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Image 
+                x:Name="image"
+                Grid.Row="0"
+                Grid.RowSpan="1" />
+            <Label
+                Grid.Row="1"
+                VerticalOptions="Center"
+                Text=
+                "The above graph shows your sleep quality level relative to other users of the app within your age range.&#x0a;&#x0a;Your sleep quality level was measured using your average wake ups count and average sleep efficiency values taken from your microsoft health profile."
+                TextColor="Black"
+                Margin="15, 15"
+                Font="17"
+                FontFamily="ComingSoon-Regular.ttf#ComingSoon-Regular"
+                FontAttributes="Italic" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
