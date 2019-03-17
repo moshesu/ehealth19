@@ -1,1 +1,0 @@
-C:\Users\Eyal\Desktop\sleep\SleepItOff\SleepItOff.UWP\SleepItOff.UWP.csproj;x86

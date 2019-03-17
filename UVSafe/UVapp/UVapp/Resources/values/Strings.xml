@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="channel_name">channelname</string>
+  <string name="channel_describtion">description</string>
+  <string name="app_name">UVSafe</string>
+  <string name="skintype_photo_instructions">
+    Your skin type will be determined by a photo.\nTake a photo of the back of your hand. The photo must:\n1. Have a white background\n2. Be taken indoor with an ordinary white light lamp\n3. Be taken with no flash
+  </string>
+</resources>

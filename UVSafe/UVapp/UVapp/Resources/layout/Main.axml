@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/topLayout"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/bandConnectionText"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_gravity="left"
+			android:layout_marginLeft="3dp"
+
+            android:text="Band: could not connect"
+            android:textSize="@dimen/abc_text_size_small_material" />
+
+        <Button
+            android:id="@+id/connectbtn"
+            android:layout_width="67dp"
+            android:layout_height="wrap_content"
+			android:layout_toRightOf="@+id/bandConnectionText"
+
+            android:layout_marginLeft="3dp"
+            android:clickable="false"
+            android:gravity="center"
+            android:text="retry"
+            android:textSize="@dimen/abc_text_size_small_material"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/currentUVNumText"
+            android:layout_width="102dp"
+            android:layout_height="54dp"
+            
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="9dp"
+            android:text="3 (MEDIUM)"
+
+            android:textAlignment="center"
+            android:textSize="@dimen/abc_text_size_large_material" />
+
+        <TextView
+            android:id="@+id/currentUVText"
+            android:layout_width="112dp"
+            android:layout_height="41dp"
+            android:layout_alignParentTop="true"
+
+            android:layout_marginTop="11dp"
+            android:layout_marginRight="-7dp"
+
+            android:layout_toLeftOf="@id/currentUVNumText"
+
+            android:text="Exposed UV:"
+            android:textAlignment="center"
+            android:textSize="@dimen/abc_text_size_medium_material" />
+
+
+    </RelativeLayout>
+
+
+
+    <TextView
+        android:id="@+id/uvMinutesText"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:text="Accumulated UV"
+        android:layout_below="@id/topLayout"
+        android:textAlignment="center"
+        android:textSize="@dimen/abc_text_size_medium_material" />
+
+    <TextView
+        android:id="@+id/acummulatedUVText"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:text="30%"
+		
+        android:textAlignment="center"
+        android:layout_below="@id/uvMinutesText"
+        android:textSize="40sp" />
+
+    <ProgressBar
+        android:id="@+id/accUVProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="281dp"
+        android:layout_height="64dp"
+        android:layout_below="@id/acummulatedUVText"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:progress="50"
+        android:progressTint="@color/colorPrimary" />
+
+    <TextView
+        android:id="@+id/bandExposureTimeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:layout_below="@id/accUVProgressBar"
+        android:text="Exposure time today"
+        android:textAlignment="center"
+        android:textSize="@dimen/abc_text_size_small_material" />
+
+    <TextView
+        android:id="@+id/ExposureTimeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:text="2h 4m"
+        android:layout_below="@id/bandExposureTimeText"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        />
+    <TextView
+        android:id="@+id/skinColorText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:text="Skin Type: II"
+        android:layout_alignParentBottom="true"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/timeYouCanSpendText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:layout_marginTop="30sp"
+        android:text="Additional time you can be exposed to current level"
+        android:textAlignment="center"
+        android:layout_below="@id/ExposureTimeText"
+        android:textSize="@dimen/abc_text_size_small_material" />
+
+    <TextView
+        android:id="@+id/additionalTimeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:text="3h 34m"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:layout_below="@id/timeYouCanSpendText"
+        />
+
+    <TextView
+        android:id="@+id/currentlySamplingText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20sp"
+        android:layout_marginRight="20sp"
+        android:text="sampling UV..."
+        android:layout_alignParentBottom="true"
+        android:gravity="end"
+        android:textSize="@dimen/abc_text_size_small_material" />
+
+</RelativeLayout>
