@@ -1,0 +1,66 @@
+﻿<Page
+    x:Class="CannaBe.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CannaBe"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Loaded="OnPageLoaded"
+    KeyDown="Page_KeyDown"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+
+
+    <Grid>
+        <Grid.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <!--<GradientStop Color="#8fe884" Offset="0"/>
+                <GradientStop Color="#6bba62" Offset="1"/>-->
+            </LinearGradientBrush>
+        </Grid.BorderBrush>
+        <Grid.BorderThickness>
+            <Thickness>10</Thickness>
+        </Grid.BorderThickness>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <!--<GradientStop Color="#8fe884" Offset="1"/>
+                <GradientStop Color="#6bba62" Offset="0"/>-->
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image Source="Assets/bluewhitebackground.jpg" Stretch="Fill"/>
+        <CheckBox Content="Debug with localhost" Visibility="Collapsed" 
+                  Foreground="Black" BorderBrush="Black"
+                  x:Name="LocalHostDebug" Checked="LocalHostDebugChanged" Unchecked="LocalHostDebugChanged"
+                  HorizontalAlignment="Left" Margin="50,160,0,0" Grid.Row="1" VerticalAlignment="Top" />
+
+        <TextBlock Foreground="Black" HorizontalAlignment="Center" Text="Medicanna" FontWeight="ExtraBold"
+                   FontStyle="Normal" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Height="84" Width="321" FontSize="50" Margin="0,30,0,0"/>
+
+        <Button Content="Login" BorderBrush="Black" FontSize="20" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000" 
+                Tapped="GoToLoginPage"
+                HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,200,0,0" RenderTransformOrigin="0.575,1.474">
+        </Button>
+        <Button Content="Register" BorderBrush="Black" FontSize="20" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000"
+                Tapped="GoToRegisterPage"
+                HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,240,0,0" Width="Auto">
+        </Button>
+        <!--<Button Content="Dashboard" BorderBrush="Black" FontSize="20" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000"
+                Tapped="GoToDashboardPage"
+                HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,280,0,0" Width="Auto">
+        </Button>-->
+
+        <Button Content="Exit" BorderBrush="Black" FontSize="20" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000"
+                Tapped="ExitApp"
+                HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,498,0,0" Width="Auto"/>
+
+
+    </Grid>
+
+</Page>

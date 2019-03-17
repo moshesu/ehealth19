@@ -1,0 +1,50 @@
+﻿<Page
+    x:Class="CannaBe.AppPages.Usage.UsageDisplay"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CannaBe.AppPages.Usage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Loaded="OnPageLoaded"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.BorderThickness>
+            <Thickness>10</Thickness>
+        </Grid.BorderThickness>
+
+        <Image Source="../../Assets/bluewhitebackground.jpg" Stretch="Fill"/>
+        <TextBlock Foreground="Black" HorizontalAlignment="Center" Text="Usage Details" FontWeight="ExtraBold"
+                   FontStyle="Normal" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Height="Auto" Width="321" FontSize="40" Margin="0,10,0,0"/>
+        <StackPanel Margin="0,80,0,0">
+            <TextBlock Foreground="Black" Text="Strain Chosen:" FontSize="22" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+            <TextBlock Foreground="Black" Text="template" 
+                   x:Name="StrainChosenText"
+                   FontFamily="Lucida Calligraphy"
+                   FontSize="22" TextWrapping="Wrap" VerticalAlignment="Top"
+                   HorizontalAlignment="Center" Width="Auto"/>
+            <TextBlock Foreground="Black" x:Name="StartTime" Text="" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+            <TextBlock Foreground="Black" x:Name="EndTime" Text="" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+            <TextBlock Foreground="Black" x:Name="Duration" Text="" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+            <TextBlock Foreground="Black" x:Name="HeartRate" Text="" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+
+            <Rectangle Height="10"/>
+            <TextBlock Foreground="Black" FontWeight="Bold" FontStretch="ExtraExpanded" Text="Post Treatment Feedback:" FontSize="22" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Center"/>
+
+            <ScrollViewer Background="#70ffffff" Height="216" MaxHeight="200" x:Name="Scroller" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch">
+                <StackPanel x:Name="Questions">
+
+                </StackPanel>
+            </ScrollViewer>
+        </StackPanel>
+        <Button Content="Back" BorderBrush="Black" FontSize="20" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000"
+                Tapped="GoBack"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom" RenderTransformOrigin="0.575,1.474" Width="300">
+        </Button>
+        <ProgressRing Width="50" Height="50" x:Name="progressRing"/>
+
+    </Grid>
+</Page>

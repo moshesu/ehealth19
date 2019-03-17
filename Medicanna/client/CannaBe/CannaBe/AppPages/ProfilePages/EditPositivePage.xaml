@@ -1,0 +1,67 @@
+﻿<Page
+    x:Class="CannaBe.AppPages.ProfilePages.EditPositivePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CannaBe.AppPages.ProfilePages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="OnPageLoaded">
+
+    <Grid x:Name="EditPositiveEffectsGrid">
+        <FlyoutBase.AttachedFlyout>
+            <Flyout>
+                <Grid/>
+            </Flyout>
+        </FlyoutBase.AttachedFlyout>
+        <Grid.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <!--<GradientStop Color="#8fe884" Offset="0"/>
+                <GradientStop Color="#6bba62" Offset="1"/>-->
+            </LinearGradientBrush>
+        </Grid.BorderBrush>
+        <Grid.BorderThickness>
+            <Thickness>10</Thickness>
+        </Grid.BorderThickness>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <!--<GradientStop Color="#8fe884" Offset="1"/>
+                <GradientStop Color="#6bba62" Offset="0"/>-->
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image Source="../../Assets/bluewhitebackground.jpg" Stretch="Fill"/>
+
+        <TextBlock HorizontalAlignment="Center" Text="Edit Profile" FontWeight="Bold"
+                   Foreground="Black"  FontFamily="Intel Clear"
+                   FontStyle="Normal" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Height="84" Width="342" FontSize="50" Margin="0,10,0,0"/>
+
+        <Button Content="Back" BorderBrush="Black" FontSize="20" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000"
+                Tapped="BackToEditMedical"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,480,0,0" RenderTransformOrigin="0.575,1.474" Width="161">
+        </Button>
+        <Button Content="Continue" BorderBrush="Black" FontSize="20" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000"
+                Tapped="GoToEditNegative"
+                HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,480,0,0" RenderTransformOrigin="0.575,1.474" Width="161">
+        </Button>
+        <TextBlock Foreground="Black" Text="Positive Effect Preferences:" FontWeight="Bold" FontSize="18" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,80,0,0"/>
+        <CheckBox Foreground="Black" Content="Aroused"     Tag="1" Margin="20,105,0,0" VerticalAlignment="Top"/>
+        <CheckBox Foreground="Black" Content="Giggly"      Tag="2" Margin="20,130,0,0" VerticalAlignment="Top"/>
+        <CheckBox Foreground="Black" Content="Focused"     Tag="3" Margin="20,155,0,0" VerticalAlignment="Top"/>
+        <CheckBox Foreground="Black" Content="Sleepy"      Tag="4" Margin="20,180,0,0" VerticalAlignment="Top"/>
+        <CheckBox Foreground="Black" Content="Tingly"      Tag="5" Margin="20,205,0,0" VerticalAlignment="Top"/>
+        <CheckBox Foreground="Black" Content="Uplifted"    Tag="6" Margin="20,230,0,0" VerticalAlignment="Top"/>
+        <CheckBox Foreground="Black" Content="Talkative"   Tag="7" Margin="20,255,0,0" VerticalAlignment="Top"/>
+        <CheckBox Foreground="Black" Content="Energetic"   Tag="8" Margin="20,280,0,0" VerticalAlignment="Top"/>
+        <CheckBox Foreground="Black" Content="Creative"    Tag="9" Margin="20,305,0,0" VerticalAlignment="Top"/>
+        <CheckBox Foreground="Black" Content="Happy"       Tag="10" Margin="20,330,0,0" VerticalAlignment="Top"/>
+        <CheckBox Foreground="Black" Content="Euphoric"    Tag="11" Margin="20,355,0,0" VerticalAlignment="Top"/>
+        <CheckBox Foreground="Black" Content="Hungry"      Tag="12" Margin="20,380,0,0" VerticalAlignment="Top"/>
+        <CheckBox Foreground="Black" Content="Relaxed"     Tag="13" Margin="20,405,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+
+</Page>

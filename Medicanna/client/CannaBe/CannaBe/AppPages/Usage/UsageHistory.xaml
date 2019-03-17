@@ -1,0 +1,121 @@
+﻿<Page
+    x:Class="CannaBe.AppPages.Usage.UsageHistory"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CannaBe.AppPages.Usage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="OnPageLoaded">
+
+    <Grid>
+        <Grid.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <!--<GradientStop Color="#8fe884" Offset="0"/>
+                <GradientStop Color="#6bba62" Offset="1"/>-->
+            </LinearGradientBrush>
+        </Grid.BorderBrush>
+        <Grid.BorderThickness>
+            <Thickness>10</Thickness>
+        </Grid.BorderThickness>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <!--<GradientStop Color="#8fe884" Offset="1"/>
+                <GradientStop Color="#6bba62" Offset="0"/>-->
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image Source="../../Assets/bluewhitebackground.jpg" Stretch="Fill"/>
+
+        <TextBlock Foreground="Black" HorizontalAlignment="Center" Text="Usage History" FontWeight="ExtraBold"
+                   FontStyle="Normal" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Height="auto" Width="321" FontSize="40" Margin="0,10,0,0"/>
+
+        <ListView x:Name="UsageListGui" Background="#90ffffff"
+                  Margin="0,100,0,60" BorderBrush="Black" BorderThickness="0"
+                  IsItemClickEnabled="True" ItemClick="UsageSelected">
+            <ListView.Resources>
+                <MenuFlyout x:Name="UsageMenu">
+                    <MenuFlyout.Items>
+                        <MenuFlyoutItem x:Name="Remove" Text="Remove" Click="Remove_Click" />
+                    </MenuFlyout.Items>
+                </MenuFlyout>
+            </ListView.Resources>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="x:Bind" x:Name="UsageEntry">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel>
+                            <Border Background ="#900d3c87" 
+                                Height="auto" VerticalAlignment="Top" Width="300">
+                                <StackPanel Margin="3,0,0,0">
+                                    <TextBlock Foreground="White" FontSize="18" Grid.Column="1" >
+                                    <Run x:Name="StrainNameTitle" Text="Strain: " FontWeight="Bold"/>
+                                    <Run x:Name="StrainName" Text="{Binding Path=UsageStrain.Name}"/>
+                                    </TextBlock>
+                                    <TextBlock Foreground="White" FontSize="18" Grid.Column="1" >
+                                    <Run x:Name="UsageStartTimeTitle" Text="Started on" FontWeight="Bold"/>
+                                    <Run x:Name="UsageStartTime" FontSize ="17" Text="{Binding Path=StartTimeString}"/>
+                                    </TextBlock>
+                                    <TextBlock Foreground="White" FontSize="18" Grid.Column="1">
+                                    <Run x:Name="UsageDurationTitle" Text="Duration:" FontWeight="Bold"/>
+                                    <Run x:Name="UsageDuration" Text="{Binding Path=DurationString}"/>
+                                    </TextBlock>
+                                    <TextBlock Foreground="White" FontSize="18" Grid.Column="1">
+                                    <Run x:Name="UsedBandTitle" Text="Was Band Used:" FontWeight="Bold"/>
+                                    <Run x:Name="UsedBand" Text="{Binding Path=UsedBandString}"/>
+                                    </TextBlock>
+                                    <TextBlock Foreground="White" FontSize="18" Grid.Column="1" Visibility="{Binding Path=ShowBandData}">
+                                    <Run Text="Heart Rate Data:" FontWeight="Bold"/>
+                                    </TextBlock>
+                                    <TextBlock Foreground="White" HorizontalAlignment="Center" FontSize="18" Grid.Column="1" Visibility="{Binding Path=ShowBandData}">
+                                    <Run Text="Low:" FontWeight="Bold"/>
+                                    <Run Text="{Binding Path=HeartRateMin}"/>
+                                    <Run Text="Avg:" FontWeight="Bold"/>
+                                    <Run Text="{Binding Path=HeartRateAverage}"/>
+                                    <Run Text="High:" FontWeight="Bold"/>
+                                    <Run Text="{Binding Path=HeartRateMax}"/>
+                                    </TextBlock>
+
+                                </StackPanel>
+                            </Border>
+                            <Rectangle Height="10" VerticalAlignment="Top"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <!--<x:String>a</x:String>
+            <x:String>a</x:String>-->
+
+
+        </ListView>
+
+        <Grid Visibility="Collapsed"
+            x:Name="NoUsageButton" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Background ="#900d3c87" Height="70"
+                                VerticalAlignment="Top" Width="300"
+                    Click="AddNewUsage">
+                <TextBlock Foreground="White"  TextAlignment="Center"
+                               HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Run Text=" Still no usages!" FontSize="23" FontWeight="Bold"/>
+                        <LineBreak/>
+                        <Run x:Name="StrainNameTitle" Text="Click to add a new usage" FontWeight="Bold"/>
+
+                </TextBlock>
+
+            </Button>
+        </Grid>
+
+        <Button Content="Home" BorderBrush="Black" FontSize="20" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000"
+                Tapped="GoToDashboard"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom" RenderTransformOrigin="0.575,1.474" Width="300">
+        </Button>
+
+        <ProgressRing Width="50" Height="50" x:Name="progressRing"/>
+
+    </Grid>
+</Page>

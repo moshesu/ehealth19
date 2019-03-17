@@ -1,0 +1,86 @@
+﻿<Page
+    x:Class="CannaBe.AppPages.Usage.ActiveSession"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CannaBe.AppPages.Usage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Loaded="OnPageLoaded"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.BorderThickness>
+            <Thickness>10</Thickness>
+        </Grid.BorderThickness>
+
+        <Image Source="../../Assets/bluewhitebackground.jpg" Stretch="Fill"/>
+        <TextBlock Foreground="DarkGreen" HorizontalAlignment="Center" Text="Active Session" FontWeight="ExtraBold"
+                   FontStyle="Normal" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Height="Auto" Width="321" FontSize="40" Margin="0,10,0,0"/>
+
+        <TextBlock Foreground="Black" Text="Strain Chosen:" FontSize="22" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,82,10,0" HorizontalAlignment="Stretch"/>
+        <TextBlock Foreground="Black" Text="template" 
+                   x:Name="StrainChosenText"
+                   FontFamily="Lucida Calligraphy"
+                   FontSize="22" TextWrapping="Wrap" VerticalAlignment="Top" Margin="10,115,10,0" 
+                   HorizontalAlignment="Center" Width="Auto"/>
+        <TextBlock Foreground="Black" x:Name="StartTime" Text="Start Time:" FontSize="22" TextWrapping="Wrap" VerticalAlignment="Top" Margin="11,154,29,0" HorizontalAlignment="Stretch"/>
+        
+        <TextBlock Foreground="Black" x:Name="Duration" Text="Duration:" FontSize="22" TextWrapping="Wrap" VerticalAlignment="Top" Margin="11,190,29,0" HorizontalAlignment="Stretch"/>
+
+        <Grid x:Name="LiveHeartRate">
+        <Border Background="White" Opacity="0.7"
+                CornerRadius="10,10,10,10" 
+                BorderBrush="Black"
+                BorderThickness="2" HorizontalAlignment="Stretch" Margin="50,236,50,180" VerticalAlignment="Stretch" Width="221"/>
+        <TextBlock Foreground="Black"
+                   FontWeight="Bold" Width="Auto" HorizontalAlignment="Center"
+                   Text="Live Heart Rate:" 
+                   FontSize="22" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,246,0,0"/>
+
+        <TextBlock Foreground="Black" Width="Auto" HorizontalAlignment="Center"
+                   Text="Min" 
+                   FontSize="17" TextWrapping="Wrap" VerticalAlignment="Top" Margin="-130,286,0,0"/>
+        <TextBlock Foreground="Black" Width="Auto" HorizontalAlignment="Center"
+                   Text="Average" 
+                   FontSize="17" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,286,0,0"/>
+        <TextBlock Foreground="Black" Width="Auto" HorizontalAlignment="Center"
+                   Text="Max" 
+                   FontSize="17" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,286,-130,0"/>
+
+        <TextBlock Foreground="Black" Width="Auto" HorizontalAlignment="Center"
+                   Text="--"  x:Name="Min"
+                   FontSize="17" TextWrapping="Wrap" VerticalAlignment="Top" Margin="-130,316,0,0"/>
+        <TextBlock Foreground="Black" Width="Auto" HorizontalAlignment="Center"
+                   Text="--"   x:Name="Avg"
+                   FontSize="17" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,316,0,0"/>
+        <TextBlock Foreground="Black" Width="Auto" HorizontalAlignment="Center"
+                   Text="--" x:Name="Max"
+                   FontSize="17" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,316,-130,0"/>
+        <Border Background="White" Opacity="0.7"
+                x:Name="Acquiring" 
+                CornerRadius="10,10,10,10" 
+                BorderBrush="Black"
+                BorderThickness="2" HorizontalAlignment="Stretch" Margin="50,236,50,180" VerticalAlignment="Stretch" Width="221"/>
+            <TextBlock  Margin="50,256,50,180" x:Name="BandIsNA"
+                        Visibility="Collapsed"
+                        FontSize="30" FontWeight="Bold"
+                Foreground="DarkBlue" Text="" Width="Auto" TextAlignment="Center">
+                <Run>Band is</Run>
+                <LineBreak/>
+                <Run>Not Available</Run>
+            </TextBlock>
+
+        </Grid>
+        <Button Content="End Session" BorderBrush="Black" FontSize="20" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000"
+                x:Name="EndSessionButton"
+                Click="EndSessionAsync"
+                HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,480,0,0" RenderTransformOrigin="0.575,1.474" Width="300">
+        </Button>
+
+        <ProgressRing Width="50" Height="50" x:Name="progressRing"/>
+
+    </Grid>
+</Page>

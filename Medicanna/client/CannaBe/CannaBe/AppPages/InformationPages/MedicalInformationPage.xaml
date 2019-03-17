@@ -1,0 +1,105 @@
+﻿<Page
+    x:Class="CannaBe.AppPages.InformationPages.MedicalInformationPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CannaBe.AppPages.InformationPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="OnPageLoaded">
+
+    <Grid>
+        <Grid.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <!--<GradientStop Color="#8fe884" Offset="0"/>
+                <GradientStop Color="#6bba62" Offset="1"/>-->
+            </LinearGradientBrush>
+        </Grid.BorderBrush>
+        <Grid.BorderThickness>
+            <Thickness>10</Thickness>
+        </Grid.BorderThickness>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <!--<GradientStop Color="#8fe884" Offset="1"/>
+                <GradientStop Color="#6bba62" Offset="0"/>-->
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image Source="../../Assets/bluewhitebackground.jpg" Stretch="Fill"/>
+        
+        <TextBlock Foreground="Black" HorizontalAlignment="Center" Text="Medical Info" FontWeight="ExtraBold"
+                   FontStyle="Normal" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Height="84" Width="321" FontSize="46" Margin="0,10,0,0"/>
+
+        <TextBlock Foreground="Black" Text="Search By Doctor Name:" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,100,0,0"/>
+
+        <AutoSuggestBox x:Name="DoctorsList" HorizontalAlignment="Left" PlaceholderText="Type to load doctor list"  Margin="0,123,0,0" VerticalAlignment="Top" Width="213"
+                  TextChanged="DoctorsList_TextChanged"
+                  QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                  SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
+        
+        <Button x:Name="SubmitDoctorButton"  Content="Select" BorderBrush="Black" FontSize="15" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000" Click="SubmitDoctorButton_Click"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="212,123,0,0" RenderTransformOrigin="0.575,1.474" Width="89" />
+
+        <TextBlock Foreground="Black" Text="Search By City:" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,165,0,0"/>
+
+        <AutoSuggestBox x:Name="CityList" HorizontalAlignment="Left" PlaceholderText="Type to load Cities"  Margin="0,188,0,0" VerticalAlignment="Top" Width="213"
+                  TextChanged="CityList_TextChanged"
+                  QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                  SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
+
+        <Button x:Name="SubmitCityButton"  Content="Select" BorderBrush="Black" FontSize="15" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000" Click="SubmitCityButton_Click"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="212,188,0,0" RenderTransformOrigin="0.575,1.474" Width="89" />
+        
+        <TextBlock Foreground="Black" Text="Search By Medical Center:" FontWeight="Bold" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,230,0,0"/>
+
+        <AutoSuggestBox x:Name="MedicalCenterList" HorizontalAlignment="Left" PlaceholderText="Type to load Cities"  Margin="0,253,0,0" VerticalAlignment="Top" Width="213"
+                  TextChanged="MedicalCenterList_TextChanged"
+                  QuerySubmitted="AutoSuggestBox_QuerySubmitted"
+                  SuggestionChosen="AutoSuggestBox_SuggestionChosen"/>
+
+        <Button x:Name="SubmitMedicalCenterButton"  Content="Select" BorderBrush="Black" FontSize="15" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000" Click="SubmitMedicalCenterButton_Click"
+                HorizontalAlignment="Left" VerticalAlignment="Top" Margin="212,253,0,0" RenderTransformOrigin="0.575,1.474" Width="89" />
+
+
+        <ProgressRing Width="50" Height="50" x:Name="progressRing"/>
+
+        <ScrollViewer ZoomMode="Enabled" MaxZoomFactor="10"
+              HorizontalScrollMode="Disabled" HorizontalScrollBarVisibility="Disabled"
+              Height="150" HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,310,0,0">
+            <Grid>
+                <TextBlock x:Name="doctor_chosen" FontWeight="Bold" Foreground="Black" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,0,0,0"/>
+                <TextBlock x:Name="doctor_data" Foreground="Black" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,20,0,0"/>
+            </Grid>
+        </ScrollViewer>
+        
+        <Grid  x:Name="ErrorNoDoctorChosen" Visibility="Collapsed">
+            <Rectangle Fill="White" Opacity="0.7" 
+                   Margin="20,355,20,0" 
+                   Height="36"
+                   HorizontalAlignment="Stretch" 
+                   VerticalAlignment="Stretch"/>
+            <TextBlock Text="Please choose a doctor" FontSize="26" 
+                   HorizontalAlignment="Center"
+                   Foreground="black"
+                   
+                   FontWeight="Bold"
+                   TextWrapping="Wrap" VerticalAlignment="Top" Margin="20,435,20,0"/>
+        </Grid>
+
+        <Button Content="Back To Information Page" BorderBrush="Black" FontSize="20" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000" Margin="0,0,0,37"
+                Tapped="BackToInformationPage" VerticalAlignment="Bottom"
+                HorizontalAlignment="Center" RenderTransformOrigin="0.575,1.474" Width="300">
+        </Button>
+        <Button Content="Home" BorderBrush="Black" FontSize="20" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000" VerticalAlignment="Bottom"
+                Tapped="GoToDashboard"
+                HorizontalAlignment="Center" RenderTransformOrigin="0.575,1.474" Width="300">
+        </Button>
+    </Grid>
+
+</Page>

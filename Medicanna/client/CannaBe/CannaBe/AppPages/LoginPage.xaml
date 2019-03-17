@@ -1,0 +1,78 @@
+﻿<Page
+    x:Class="CannaBe.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CannaBe"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="OnPageLoaded"
+    KeyDown="Page_KeyDown">
+
+    <Grid>
+        <Grid.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <!--<GradientStop Color="#8fe884" Offset="0"/>
+                <GradientStop Color="#6bba62" Offset="1"/>-->
+            </LinearGradientBrush>
+        </Grid.BorderBrush>
+        <Grid.BorderThickness>
+            <Thickness>10</Thickness>
+        </Grid.BorderThickness>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <!--<GradientStop Color="#8fe884" Offset="1"/>
+                <GradientStop Color="#6bba62" Offset="0"/>-->
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image Source="../../Assets/bluewhitebackground.jpg" Stretch="Fill"/>
+
+
+        <TextBlock Foreground="Black" HorizontalAlignment="Center" Text="User Login" FontWeight="Bold"
+                   FontFamily="Intel Clear"
+                   FontStyle="Normal" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Height="84" Width="342" FontSize="50" Margin="0,10,0,0"/>
+
+
+
+        <!--<TextBox HorizontalAlignment="Center" Text="Enter Username" BorderBrush="Black"
+                 FontSize="23" TextAlignment="Start" Foreground="White" 
+                 Margin="0,159,0,340" Width="257"
+                 x:Name="Username"
+                 GotFocus="BoxGotFocus"
+                 LostFocus="BoxLostFocus"/>-->
+        
+        <TextBox x:Name ="Username" HorizontalAlignment="Stretch"  
+                 Margin="0,170,0,0"  PlaceholderText="Enter Username"
+                 FontSize="22" Foreground="Black" VerticalAlignment="Top" 
+                 GotFocus="BoxGotFocus" LostFocus="BoxLostFocus"/>
+        <PasswordBox x:Name ="Password" HorizontalAlignment="Stretch"  
+                 Margin="0,210,0,0" PasswordRevealMode="Peek"
+                 FontSize="22" Foreground="Black"
+                 PlaceholderText="Enter Password" VerticalAlignment="Top" 
+                 GotFocus="BoxGotFocus" LostFocus="BoxLostFocus"/>
+
+        <!--<TextBox HorizontalAlignment="Center" Text="Enter Password" BorderBrush="Black"
+                 FontSize="23" TextAlignment="Left" Foreground="White"
+                 Margin="0,255,0,245" Width="257"
+                 x:Name="Password"
+                 GotFocus="BoxGotFocus"
+                 LostFocus="BoxLostFocus" RenderTransformOrigin="0.49,1.453" VerticalAlignment="Stretch"/>-->
+
+        <Button Content="Login" BorderBrush="Black" FontSize="20" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000" Click="PostLogin"
+                x:Name="LoginButton"
+                HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,340,0,0" RenderTransformOrigin="0.575,1.474">
+        </Button>
+        <Button Content="Home" BorderBrush="Black" FontSize="20" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000"
+                Click="BackToMain"
+                HorizontalAlignment="Stretch" VerticalAlignment="Top" Margin="0,376,0,0" Width="Auto">
+        </Button>
+        <TextBlock FontSize="15" x:Name="Status" Foreground="Black" TextAlignment="Center"
+            HorizontalAlignment="Center" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,456,0,0"/>
+        <ProgressRing Width="50" Height="50" x:Name="progressRing"/>
+
+    </Grid>
+</Page>

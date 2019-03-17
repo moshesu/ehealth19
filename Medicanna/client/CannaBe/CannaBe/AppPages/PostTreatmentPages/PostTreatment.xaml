@@ -1,0 +1,84 @@
+﻿<Page
+    x:Class="CannaBe.AppPages.PostTreatmentPages.PostTreatment"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CannaBe.AppPages.PostTreatmentPages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    Loaded="OnPageLoaded">
+
+    <Grid>
+        <Grid.BorderBrush>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <!--<GradientStop Color="#8fe884" Offset="0"/>
+                <GradientStop Color="#6bba62" Offset="1"/>-->
+            </LinearGradientBrush>
+        </Grid.BorderBrush>
+        <Grid.BorderThickness>
+            <Thickness>10</Thickness>
+        </Grid.BorderThickness>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <!--<GradientStop Color="#8fe884" Offset="1"/>
+                <GradientStop Color="#6bba62" Offset="0"/>-->
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Image Source="../../Assets/bluewhitebackground.jpg" Stretch="Fill"/>
+
+        <TextBlock Foreground="Black" HorizontalAlignment="Center" Text="Post Treatment Feedback" FontWeight="ExtraBold"
+                   FontStyle="Normal" TextAlignment="Center" TextWrapping="Wrap" VerticalAlignment="Top" 
+                   Height="120" Width="321" FontSize="40" Margin="0,10,0,0"/>
+        <ListView x:Name="PostQuestions" IsItemClickEnabled="False" IsTapEnabled="False"
+                  Margin="0,130,0,80" BorderBrush="Black" BorderThickness="0">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="x:Bind" x:Name="QuestionsEntry">
+                    <Grid x:Name="QuestionsGrid" Background="#20ffffff">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="3,0,0,0" x:Name="QuestionsStackPanel">
+                            <TextBlock Foreground="Black" FontSize="18" Grid.Column="1" x:Name="questions" MaxWidth="320" Text="{Binding Path=q1}"
+                                           TextWrapping="WrapWholeWords"/>
+                                <Rectangle Height="2" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="answers" SelectionChanged="Answers_SelectionChanged" Tag="{Binding Path=q1}">
+                                    <x:String>Yes</x:String>
+                                    <x:String>No</x:String>
+                                    <x:String>Don't know</x:String>
+                                </ComboBox>
+                                <Rectangle Height="8" VerticalAlignment="Top"/>
+
+                            <TextBlock Foreground="Black" FontSize="18" Grid.Column="1" x:Name="question2" MaxWidth="320" Text="{Binding Path=q2}"
+                                           TextWrapping="WrapWholeWords"/>
+                                <Rectangle Height="2" VerticalAlignment="Top"/>
+                                <ComboBox x:Name="answers2"  SelectionChanged="Answers_SelectionChanged" Tag="{Binding Path=q2}">
+                                    <x:String>1</x:String>
+                                    <x:String>2</x:String>
+                                    <x:String>3</x:String>
+                                    <x:String>4</x:String>
+                                    <x:String>5</x:String>
+                                    <x:String>6</x:String>
+                                    <x:String>7</x:String>
+                                    <x:String>8</x:String>
+                                    <x:String>9</x:String>
+                                    <x:String>10</x:String>
+                                </ComboBox>
+                                <Rectangle Height="8"  VerticalAlignment="Top"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Content="Continue" BorderBrush="Black" FontSize="20" FontWeight="SemiBold"
+                Foreground="Black" Background="#10000000"
+                Tapped="ContinuePostFeedback"
+                HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,480,0,0" RenderTransformOrigin="0.575,1.474" Width="300">
+        </Button>
+        
+ <TextBlock Foreground="Black" FontSize="20" x:Name="Status"
+            HorizontalAlignment="Center" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,400,0,0"/>
+        <ProgressRing Width="50" Height="50" x:Name="progressRing"/>
+    </Grid>
+</Page>
