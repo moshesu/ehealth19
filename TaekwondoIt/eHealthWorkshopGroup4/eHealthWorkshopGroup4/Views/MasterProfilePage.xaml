@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eHealthWorkshopGroup4.Views.MasterProfilePage"
+             MasterBehavior="Popover"
+             Title="Profile"
+             NavigationPage.HasNavigationBar="False">
+    
+    <MasterDetailPage.Master>
+
+        <ContentPage BackgroundColor="#d6d6d6" Title="Master" >
+
+            <ContentPage.Content>
+
+                <StackLayout>
+
+                    <ImageButton Source="menu.png" Clicked="returnToProfile" WidthRequest="25" HeightRequest="25" 
+                                 HorizontalOptions="Start" TranslationX="10" TranslationY="10"/>
+
+                    <Grid x:Name="masterGrid" RowSpacing="30" VerticalOptions="CenterAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height ="AUTO"/>
+                            <RowDefinition Height ="AUTO"/>
+                            <RowDefinition Height ="AUTO"/>
+                        </Grid.RowDefinitions>
+
+
+                        <StackLayout Grid.Row="0" VerticalOptions="Center" Spacing="5" Padding="40,0">
+                            <Label Text="Change your password" TextColor="MidnightBlue" Style="{StaticResource ProfileNameLable}" FontSize="18"/>
+                            <Entry x:Name="currPass" Placeholder="Current password" PlaceholderColor="#2d1d17" TextColor="MidnightBlue"
+                               TextChanged="Handle_TextChanged" Style="{StaticResource MainBodyLable}"/>
+                            <Entry x:Name="pass1" Placeholder="New password" PlaceholderColor="#2d1d17" TextColor="MidnightBlue"
+                               TextChanged="Handle_TextChanged" Style="{StaticResource MainBodyLable}"/>
+                            <Entry x:Name="pass2" Placeholder="Reenter New password" PlaceholderColor="#2d1d17" TextColor="MidnightBlue"
+                               TextChanged="Handle_TextChanged" Style="{StaticResource MainBodyLable}"/>
+                            <Button Clicked="changePasswordHendler" Text="Cahnge password" Style="{StaticResource AppButton}"/>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="1"  VerticalOptions="Center" Spacing="5" Padding="40,0">
+                            <Label Text="Create new traning group" TextColor="MidnightBlue" Style="{StaticResource ProfileNameLable}" FontSize="18"/>
+                            <Entry x:Name="newGroup" Placeholder="Current password" PlaceholderColor="#2d1d17" TextColor="MidnightBlue"
+                               TextChanged="Handle_TextChanged" Style="{StaticResource MainBodyLable}"/>
+                            <Button Clicked="addGroupHendler" Text="Create Group" Style="{StaticResource AppButton}"/>
+                        </StackLayout>
+
+                        <StackLayout Grid.Row="2" VerticalOptions="Center" Padding="40,0">
+                            <Button Clicked="deleteHndler" Text="Delete your account" Style="{StaticResource AppButton}"/>
+                        </StackLayout>
+
+
+                    </Grid>
+
+                </StackLayout>
+
+            </ContentPage.Content>
+
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eHealthWorkshopGroup4.Views.NewMessagePage"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="AUTO"/>
+            <RowDefinition Height ="AUTO"/>
+            <RowDefinition Height ="AUTO"/>
+            <RowDefinition Height ="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" BackgroundColor="#ffdab9">
+            <Grid.ColumnDefinitions Grid.Row="0">
+                <ColumnDefinition Width="AUTO"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="AUTO"/>
+            </Grid.ColumnDefinitions>
+
+            <ImageButton Grid.Column="0" Source="GoBackArrow.png" Clicked="GoBackHandler" 
+                         WidthRequest="70" HeightRequest ="80" TranslationX="20" BackgroundColor="Transparent"
+                         Style="{StaticResource AppImageButton}"/>
+
+            <Label Grid.Column="1" Text="New Message" TextColor="White" HorizontalOptions="CenterAndExpand" 
+                   VerticalOptions="CenterAndExpand" Style="{StaticResource ProfileNameLable}" TranslationX="-15"/>
+
+            <ImageButton Grid.Column="2" Source="SendIcon.png" Clicked="SendHandler"
+                         WidthRequest="40" HeightRequest ="30" TranslationX="-10" BackgroundColor="Transparent"
+                         Style="{StaticResource AppImageButton}"/>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Text="To" VerticalOptions="Center" TextColor="#2d1d17" Style="{StaticResource ProfileNameLable}"/>
+            <Picker x:Name="groupPicker" Grid.Column="1" SelectedIndexChanged="pickGroup"/>
+            <!--<Entry Grid.Column="1" Style ="{StaticResource MainBodyLable}"/>-->
+        </Grid>
+
+        <Entry x:Name="titleEntry" Grid.Row="2" Placeholder="Title" PlaceholderColor="#2d1d17"/>
+        <Editor x:Name="contentEditor" Grid.Row="3" Placeholder="Write the message here" PlaceholderColor="#2d1d17">
+            <Editor.Keyboard>
+                <Keyboard x:FactoryMethod="Create">
+                    <x:Arguments>
+                        <KeyboardFlags>Suggestions</KeyboardFlags>
+                    </x:Arguments>
+                </Keyboard>
+            </Editor.Keyboard>
+        </Editor>
+        <!--<Entry Grid.Row="3" Placeholder="Write the message here" PlaceholderColor="#2d1d17" 
+               Style ="{StaticResource MainBodyLable}"/>-->
+
+    </Grid>
+</ContentPage>

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eHealthWorkshopGroup4.Views.InfoPage"
+             Title="Exercises archives">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="0" BackgroundColor="#ffdab9">
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="65*"/>
+                <RowDefinition Height ="35*"/>
+
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Source="KickIcon.png" WidthRequest="130" HeightRequest="130" VerticalOptions="End"/>
+            <Label Grid.Row="1" Text="Technique" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center"
+                   Style="{StaticResource ProfileNameLable}"/>
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TechniqueHandler" NumberOfTapsRequired="1"/>
+            </Grid.GestureRecognizers>
+        </Grid>
+
+        <Grid Grid.Column="1" BackgroundColor="#ff8484">
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="65*"/>
+                <RowDefinition Height ="35*"/>
+
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Source="BookInfoIcon.png" WidthRequest="130" HeightRequest="130" VerticalOptions="End"/>
+            <Label Grid.Row="1" Text="Poomsaes" FontSize="30" HorizontalOptions="Center" VerticalOptions="Center"
+                   Style="{StaticResource ProfileNameLable}"/>
+
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer Tapped="PoomsaesHandler" NumberOfTapsRequired="1"/>
+            </Grid.GestureRecognizers>
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

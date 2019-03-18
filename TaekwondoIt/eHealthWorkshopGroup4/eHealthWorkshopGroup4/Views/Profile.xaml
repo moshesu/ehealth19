@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eHealthWorkshopGroup4.Views.Profile"
+             xmlns:vm="clr-namespace:eHealthWorkshopGroup4.ViewModels"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             BackgroundColor="{StaticResource BackgroundColor}">
+
+    <Grid x:Name="blabla" RowSpacing="0">
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="AUTO"/>
+            <RowDefinition Height ="AUTO"/>
+            <RowDefinition Height ="AUTO"/>
+            <RowDefinition Height ="*"/>
+        </Grid.RowDefinitions>
+        
+        <!--heder background-->
+        <Image Grid.Row="0" x:Name="SubjectImage" Aspect="AspectFill"/>
+        
+        <!--profile name-->
+        <StackLayout Grid.Row="1" Padding="0,80,0,0">
+            <Label x:Name="FullName" Style="{StaticResource ProfileNameLable}" />
+            <Label x:Name="NickName" Style="{StaticResource ProfileTagLable}" />
+        </StackLayout>
+        
+        <!--social stats-->
+        <Grid Grid.Row="2" Margin="0,10" ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="0">
+                <Label Text="My Rank" Style="{StaticResource StatsNumberLable}"/>
+                <Label x:Name="UserRank" Style="{StaticResource StatsCaptionLable}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1">
+                <Label Text="My Coach" Style="{StaticResource StatsNumberLable}"/>
+                <Label x:Name="CoachName" Style="{StaticResource StatsCaptionLable}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="2">
+                <Label Text="My Group" Style="{StaticResource StatsNumberLable}"/>
+                <Label x:Name="GroupName" Style="{StaticResource StatsCaptionLable}"/>
+            </StackLayout>
+        </Grid>
+
+        <!-- profile statistics-->
+        <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+            <Label Text="Your XP index:" Style="{StaticResource StatsNumberLable}" TranslationY="70"/>
+            <Grid>
+                <forms:AnimationView 
+	                x:Name="animationView"
+	                Animation="star_animation.json"
+                    Loop="True"
+	                AutoPlay="True"  
+                    HeightRequest="300"
+                    WidthRequest="300"
+                />
+                <Label x:Name="XPindex" Style="{StaticResource StatsNumberLable}" TranslationY="73" FontSize="30"/>
+            </Grid>
+
+        </StackLayout>
+
+
+
+
+        <!-- Profile imege-->
+        <controls:CircleImage x:Name="ProfileImage" HorizontalOptions="Center" VerticalOptions="End"
+               WidthRequest="200" HeightRequest="170" TranslationY="70" BorderColor="White"
+                              BorderThickness="5"/>
+
+        <ImageButton x:Name="ChangeProfilePictureButton" Clicked="PickPicture" Source="CircleCamera.png" HorizontalOptions="Center" VerticalOptions="End"
+                WidthRequest="40" HeightRequest="40" TranslationX="60" TranslationY="70" BackgroundColor="Transparent"
+                     Style="{StaticResource AppImageButton}"/>
+
+        <ImageButton x:Name="ChangeBackgroundImagePictureButton" Clicked="PickPicture" Source="SquareCamera.png" HorizontalOptions="Center" VerticalOptions="End"
+               WidthRequest="40" HeightRequest="50" TranslationX="150" TranslationY="25" BackgroundColor="Transparent"
+                     Style="{StaticResource AppImageButton}"/>
+
+    </Grid>
+</ContentPage>

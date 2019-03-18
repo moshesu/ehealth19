@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:eHealthWorkshopGroup4.Views"
+            x:Class="eHealthWorkshopGroup4.Views.MainPage"
+            xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+            android:TabbedPage.ToolbarPlacement="Bottom"
+            NavigationPage.HasNavigationBar="False">
+    
+    <!--these pages are the pages to be part of the tabbed page-->
+    <NavigationPage Icon="HomeIcon.png">
+        <x:Arguments>
+            <local:Home/>
+        </x:Arguments>
+    </NavigationPage >
+    <NavigationPage Icon="HeartPulse.png">
+        <x:Arguments>
+            <local:TrainingPage/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Icon="ProfileIcon.png">
+        <x:Arguments>
+            <local:MasterProfilePage/>
+        </x:Arguments>
+    </NavigationPage> 
+    <NavigationPage Icon="BookInfoIcon.png">
+        <x:Arguments>
+            <local:InfoPage/>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage Icon="MessageIcon.png">
+        <x:Arguments>
+            <local:MessagesPage/>
+        </x:Arguments>
+    </NavigationPage>
+</TabbedPage>

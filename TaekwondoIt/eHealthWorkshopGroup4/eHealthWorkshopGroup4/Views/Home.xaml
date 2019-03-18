@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             xmlns:Helpers="clr-namespace:eHealthWorkshopGroup4.Models"
+             x:Class="eHealthWorkshopGroup4.Views.Home"
+             x:Name="This"
+             Title ="Home" Icon="appico.ico">
+    <ContentPage.BindingContext>
+        <x:Reference Name="This"/>
+    </ContentPage.BindingContext>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="title" Text="Statistics" TextDecorations="Underline" FontAttributes="Bold" FontSize="Large"/>
+            <WebView x:Name="webView" Navigated="WebView_NavigationCompleted" WidthRequest="300" HeightRequest="300" IsVisible="False"/>
+            <Button x:Name="SyncButton" Text="Sync" Clicked="SyncButton_Click" Style="{StaticResource AppButton}"/>
+            <!--Charts shown depending on IsCoach value-->
+            <!--#region Trainer Charts-->
+            <Picker Title="Select Group" 
+                    x:Name="picker"
+                    ItemsSource="{Binding MyGroups}"
+                    SelectedItem="{Binding SelectedGroup}"/>
+
+            <StackLayout IsVisible="{Binding AreThereExercises,Converter={Helpers:InverseBoolConverter}}">
+                <Label Text = "Note: You currently have no documented exercises. please sync with MSHealth" 
+                   IsVisible="{Binding IsCoach,Converter={Helpers:InverseBoolConverter}}" TextColor="Red" FontAttributes="Italic" FontSize="Medium"/>
+                <Label Text = "Please select a group to view its statistics.
+                       If you've already selected a group, its members need to sync their activities." 
+                   IsVisible="{Binding IsCoach}" TextColor="Red" FontAttributes="Italic" FontSize="Medium"/>
+            </StackLayout>
+            <ScrollView MinimumHeightRequest="300" VerticalOptions="FillAndExpand" IsVisible="{Binding AreThereExercises}" >
+                <StackLayout x:Name="Charts" VerticalOptions="FillAndExpand">
+                    <Label x:Name="AvgHRTitle" Text="Average HR"   FontSize="Medium" />
+                    <forms:ChartView x:Name="AvgHR" HeightRequest="200"  />
+                    <Label x:Name="PeakHRTitle" Text="Peak HR"   FontSize="Medium" />
+                    <forms:ChartView x:Name="PeakHR" HeightRequest="200"  />
+                    <Label x:Name="DurationTitle" Text="Training Duration" FontSize="Medium" IsVisible="{Binding IsCoach,Converter={Helpers:InverseBoolConverter}}" />
+                    <forms:ChartView x:Name="Duration" HeightRequest="200" IsVisible="{Binding IsCoach,Converter={Helpers:InverseBoolConverter}}"/>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="eHealthWorkshopGroup4.Views.PoomsaePage">
+    
+    
+    
+    <ContentPage.Content>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="Auto"/>
+                <RowDefinition Height ="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="110"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Row="0" Grid.Column="0" VerticalOptions="CenterAndExpand">
+                <Label Style="{StaticResource StatsNumberLable}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Level of poomsae: "/>
+                            <Span x:Name="minRank" FontAttributes="Bold" FontSize="22"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label Style="{StaticResource StatsNumberLable}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="XP: "/>
+                            <Span x:Name="XP" FontAttributes="Bold" FontSize="22"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+            <ImageButton Grid.Row="0" Grid.Column="1" Source="check_mark_icon.png" Clicked="CheckMarkHendler"
+                    HeightRequest="40" WidthRequest="40" TranslationX="0" BackgroundColor="Transparent"/>
+           
+            <forms:AnimationView 
+	                x:Name="animationView"
+                    Grid.Row ="0"
+                    Grid.Column="1"
+	                Animation="check_mark.json"
+                    Loop="False"
+	                AutoPlay="False"
+                    IsVisible ="False"
+                    HeightRequest="100"
+                    WidthRequest="100"
+                    TranslationX="0"
+                    TranslationY="0"
+            />
+
+            <Image x:Name="PoomsaeImg" Grid.Row="1" Grid.ColumnSpan="2"/>
+            
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:eHealthWorkshopGroup4.ViewModels"
+             x:Class="eHealthWorkshopGroup4.Views.TechniquesListPage"
+             BackgroundColor="#ffdab9"
+             Title="Select a techniques"
+             >
+
+    <ContentPage.BindingContext>
+        <local:TechniquesListViewModel/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="AUTO"/>
+            </Grid.RowDefinitions>
+
+            <ListView Grid.Row="0" x:Name="TechniquesListView" ItemsSource="{Binding TechniquesList}"
+                HasUnevenRows="True" ItemTapped="ListView_OnItemTapped" Style="{StaticResource PressedListView}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ContentView Padding="5" BackgroundColor="#e2f0fd">
+                                <Frame OutlineColor="#b2cbe5" Padding="10" BackgroundColor="#daebff">
+                                    <Grid HorizontalOptions="Center" ColumnSpacing="60">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="100"/>
+                                            <ColumnDefinition Width="100"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label Grid.Column="0" Text="{Binding name}" Style="{StaticResource ProfileNameLable}"
+                                               FontSize="22" TextColor="#003366" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <Label Grid.Column="1" Text="{Binding category}" Style="{StaticResource ProfileNameLable}" 
+                                               FontSize="22" TextColor="#065535" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+                                    </Grid>
+                                </Frame>
+                            </ContentView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

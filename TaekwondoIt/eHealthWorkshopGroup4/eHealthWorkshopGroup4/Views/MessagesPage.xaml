@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:eHealthWorkshopGroup4.ViewModels"
+             x:Class="eHealthWorkshopGroup4.Views.MessagesPage"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             Title="Messages">
+
+
+    <ContentPage.BindingContext>
+        <local:MessagesViewModel/>
+    </ContentPage.BindingContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height ="AUTO"/>
+        </Grid.RowDefinitions>
+
+        <ListView Grid.Row="0" x:Name="Messages" ItemsSource="{Binding Messages}"
+        HasUnevenRows="True" ItemTapped="ListView_OnItemTapped" IsPullToRefreshEnabled="True"
+                  Style="{StaticResource PressedListView}">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ContentView Padding="5">
+                            <Frame OutlineColor="#F0F8FF" Padding="10">
+                                <StackLayout x:Name="staki" VerticalOptions="Center" HorizontalOptions="Center" Spacing="0">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="30">
+                                        <controls:CircleImage Source="ProfileIcon2.png" WidthRequest="50"/>
+                                        <Label Text="{Binding Title}" Style="{StaticResource ProfileTagLable}"/>
+                                        <Label Text="{Binding Date}" Style="{StaticResource ProfileTagLable}" />
+                                        <ImageButton Source="Trash2.png" Clicked="DeleteHandler" HeightRequest="40" WidthRequest="40"
+                                                     BackgroundColor="Transparent" Style="{StaticResource AppImageButton}"/>
+                                    </StackLayout>
+                                    <Label Text ="{Binding Content}" IsVisible="{Binding IsVisible}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ContentView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ImageButton x:Name="addMessageButton" Grid.Row="0" Source="PlusIcon.png" HorizontalOptions="Start" VerticalOptions="End"
+               WidthRequest="90" HeightRequest="90" TranslationX="10" TranslationY="-10" BackgroundColor="Transparent"
+                     Clicked="NewMessageHandler" Style="{StaticResource AppImageButton}"/>
+
+    </Grid>
+    
+
+
+</ContentPage>

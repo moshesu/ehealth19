@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="eHealthWorkshopGroup4.Views.TrainingPage"
+             Title="Live Training"
+             x:Name="This"
+             BackgroundColor="#ffe1e6">
+    
+    <ContentPage.BindingContext>
+        <x:Reference Name="This"/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        
+        <Grid x:Name="trainingGrid" RowSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="Auto"/>
+                <RowDefinition Height ="Auto"/>
+                <RowDefinition Height ="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <forms:AnimationView 
+	                x:Name="animationView"
+	                Animation="heart_rate.json"
+                    Loop="True"
+	                AutoPlay="False"
+                    OnClick="ChangeTrainingStatus"  
+                    Grid.RowSpan="2"
+                    Grid.Column="0"
+                    HeightRequest="300"
+                    WidthRequest="300"
+                    TranslationX="30"
+                />
+            
+            <Label x:Name="HRLabel" Grid.Row="0" Grid.Column="1"
+                   IsVisible="{Binding IsTraining}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   Style="{StaticResource ProfileNameLable}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Your heart rate is: "/>
+                        <Span x:Name="ReadHRSpan" Text="{Binding ReadHR, Mode=OneWay}" TextColor="AliceBlue" BackgroundColor="#dd4b5f"/>
+                        <Span Text=" BPM" TextColor="AliceBlue" BackgroundColor="#dd4b5f"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label x:Name="QualityLabel" Grid.Row="1" Grid.Column="1"
+                   IsVisible="{Binding IsTraining}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center"
+                   Style="{StaticResource ProfileNameLable}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Band quality: " />
+                        <Span x:Name="qualitySpan" Text="{Binding Quality, Mode=OneWay}" TextColor="AliceBlue" BackgroundColor="#dd4b5f"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Image x:Name="PoomsaeImg" Grid.Row="2" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

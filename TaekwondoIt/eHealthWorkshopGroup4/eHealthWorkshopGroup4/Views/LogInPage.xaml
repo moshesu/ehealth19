@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="eHealthWorkshopGroup4.Views.LogInPage"
+             BackgroundColor="#ffdab9"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="AUTO"/>
+                <RowDefinition Height ="AUTO"/>
+                <RowDefinition Height ="AUTO"/>
+            </Grid.RowDefinitions>
+
+            <Image Source="LoginPhoto.png" Aspect="AspectFill" Grid.Row="0"/>
+            <Image Source="Title.png" Aspect="AspectFill" Grid.Row="1"/>
+
+            <StackLayout  Grid.Row="2" VerticalOptions="Center" Padding="50" Spacing="10">
+                <Entry x:Name="userNameEntry" Placeholder="UserName" PlaceholderColor="#2d1d17" 
+                       TextColor="MidnightBlue" TextChanged="Handle_TextChanged"/>
+                <Entry x:Name="passwordEntry" IsPassword="True" Placeholder="Password" 
+                       PlaceholderColor="#2d1d17" TextColor="MidnightBlue" TextChanged="Handle_TextChanged"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="show password" TextColor="MidnightBlue" Style="{StaticResource MainBodyLable}"/>
+                    <Switch HorizontalOptions="Center" Toggled="switch_onToggled"/>
+                </StackLayout>
+
+                <Button Text="Log In" TextColor="#2d1d17" Style="{StaticResource AppButton}" 
+                        BackgroundColor="#e59173" Clicked="LogInHendler" WidthRequest="200"/>
+
+
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="17">
+                    <Button  Text ="Forgot password" TextColor="MidnightBlue" 
+                        BackgroundColor="Transparent" HorizontalOptions="Start"/>
+
+                    <Button Text ="register" TextColor="MidnightBlue" Clicked="signUpHendler"
+                        BackgroundColor="Transparent"/>
+
+                </StackLayout>
+
+            </StackLayout>
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

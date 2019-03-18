@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             x:Class="eHealthWorkshopGroup4.Views.SingUpPage"
+             BackgroundColor="#ffdab9"
+             x:Name="This"
+             >
+
+    <ContentPage.BindingContext>
+        <x:Reference Name="This"/>
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+
+        <Grid x:Name="singUpGrid" RowSpacing="0">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="AUTO"/>
+                <RowDefinition Height ="AUTO"/>
+            </Grid.RowDefinitions>
+
+            <StackLayout Grid.Row="0" VerticalOptions="Center" Spacing="10" Padding="40" >
+                
+                <Label Text = "What is your name?" TextColor="MidnightBlue" HorizontalOptions="CenterAndExpand"
+                       Style="{StaticResource ProfileNameLable}"/>
+                <Entry x:Name="fnameEntry" Placeholder="First Name" PlaceholderColor="#2d1d17" TextColor="MidnightBlue"
+                       TextChanged="Handle_TextChanged" Style="{StaticResource MainBodyLable}"/>
+                <Entry x:Name="lnameEntry" Placeholder="Last Name" PlaceholderColor="#2d1d17" TextColor="MidnightBlue"
+                       TextChanged="Handle_TextChanged" Style="{StaticResource MainBodyLable}"/>
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="0" VerticalOptions="Center" Spacing="10" Padding="40">
+                <Label Text = "Choose a username" TextColor="MidnightBlue" HorizontalOptions="CenterAndExpand"
+                       Style="{StaticResource ProfileNameLable}"/>
+                <Entry x:Name="unameEntry" Placeholder="Nickname" PlaceholderColor="#2d1d17" TextColor="MidnightBlue" 
+                       TextChanged="Handle_TextChanged" Style="{StaticResource MainBodyLable}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="0" VerticalOptions="Center" Spacing="5" Padding="50">
+
+                <Grid>
+                    <StackLayout x:Name="stackName" Spacing="20">
+                        <Label Text ="Set your traning parameter" TextColor="MidnightBlue" HorizontalOptions="CenterAndExpand"
+                       Style="{StaticResource ProfileNameLable}"/>
+
+                        <StackLayout>
+                            <Label Text="Select Your rank:" TextColor="MidnightBlue" Style="{StaticResource MainBodyLable}"/>
+                            <Picker x:Name="rankPicker" SelectedIndexChanged="pickRank"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <ListView x:Name="SuggestionsListView" BackgroundColor="#ffd2ab" ItemTapped="Handle_ItemTapped"
+                              IsVisible="False" VerticalOptions="CenterAndExpand" TranslationY="10"/>
+                </Grid>
+
+
+                <StackLayout>
+                    <Label Text="Select which group you're trained in :" TextColor="MidnightBlue" 
+                           Style="{StaticResource MainBodyLable}"/>
+                    <Entry x:Name="groupNameEntry" TextChanged="Handle_TextChanged" Style="{StaticResource MainBodyLable}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Are you a coach?" TextColor="MidnightBlue" Style="{StaticResource MainBodyLable}"/>
+                    <Label Text="NO" TextColor="MidnightBlue"  Style="{StaticResource MainBodyLable}"/>
+                    <Switch x:Name="isCoachSwitch" HorizontalOptions="Center" Toggled="switch_onToggled"/>
+                    <Label Text="YES" TextColor="MidnightBlue"  Style="{StaticResource MainBodyLable}"/>
+                </StackLayout>
+
+                <StackLayout IsVisible ="{Binding IsCoach}">
+                    <Label Text="Enter a Name for your group" TextColor="MidnightBlue" 
+                           Style="{StaticResource MainBodyLable}"/>
+                    <Entry x:Name="coachGroupNameEntry" Placeholder="TraininGroupName" PlaceholderColor="#2d1d17" TextColor="MidnightBlue" 
+                           TextChanged="Handle_TextChanged" Style="{StaticResource MainBodyLable}"/>
+                </StackLayout>
+
+            </StackLayout>
+
+            <StackLayout Grid.Row="0" VerticalOptions="Center" Spacing="10" Padding="40">
+                <Label Text="Choose a password" TextColor="MidnightBlue" Style="{StaticResource ProfileNameLable}"/>
+                <Entry x:Name="pass1" Placeholder="Enter your password" PlaceholderColor="#2d1d17" TextColor="MidnightBlue"
+                       TextChanged="Handle_TextChanged" Style="{StaticResource MainBodyLable}"/>
+                <Entry x:Name="pass2" Placeholder="Reenter your password" PlaceholderColor="#2d1d17" TextColor="MidnightBlue"
+                       TextChanged="Handle_TextChanged" Style="{StaticResource MainBodyLable}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Row="0">
+                <!--<Label Text="Welcome to Taekuando It !! we hope you enjoy using this app" 
+                   Style="{StaticResource ProfileNameLable}" VerticalOptions="CenterAndExpand"/>-->
+
+                <Image Source="Title2.png" Aspect="AspectFill"/>
+
+                <forms:AnimationView 
+	                x:Name="animationView"
+	                Animation="welcome.json"
+                    Loop="True"
+	                AutoPlay="True"  
+                    HeightRequest="300"
+                    WidthRequest="400"
+                />
+
+            </StackLayout>
+           
+
+            <StackLayout Grid.Row="1" VerticalOptions="Center" Padding="40">
+                <Button x:Name="nextButton" Text="Next" TextColor="#2d1d17" Style="{StaticResource AppButton}" 
+                        BackgroundColor="#e59173" Clicked="NextClick"/>
+            </StackLayout>
+                
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

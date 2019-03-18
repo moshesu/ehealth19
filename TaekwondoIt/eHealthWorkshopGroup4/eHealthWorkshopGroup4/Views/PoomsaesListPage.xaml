@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:eHealthWorkshopGroup4.ViewModels"
+             x:Class="eHealthWorkshopGroup4.Views.PoomsaesListPage"
+             Title="Select a Poomsaes">
+
+
+    <ContentPage.BindingContext>
+        <local:PoomsaesListViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+
+        <Grid Padding="40">
+            <Grid.RowDefinitions>
+                <RowDefinition Height ="AUTO"/>
+                <RowDefinition Height ="AUTO"/>
+                <RowDefinition Height ="AUTO"/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="0" Text="Choose a poomsaes" TextColor="White" Clicked="showPoomsaesList" Style="{StaticResource AppButton}"/>
+
+
+            <ListView x:Name="PoomsaesListView" Grid.Row="1" ItemsSource="{Binding PoomsaesList}" IsVisible="False"
+                HasUnevenRows="True" ItemTapped="ListView_OnItemTapped" Style="{StaticResource PressedListView}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ContentView Padding="5" BackgroundColor="#e2f0fd">
+                                <Frame OutlineColor="#b2cbe5" Padding="10" BackgroundColor="#daebff">
+                                    <Label Text="{Binding Name}" Style="{StaticResource ProfileNameLable}"
+                                               FontSize="22" TextColor="#003366" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Frame>
+                            </ContentView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button Grid.Row="2" Text="App suggestion" TextColor="White" Clicked="PoomsaeForUser" Style="{StaticResource AppButton}"/>
+
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
